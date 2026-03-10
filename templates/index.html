@@ -139,3 +139,20 @@
     </div>
 </body>
 </html>
+{% for task in tasks %}
+<li class="todo-item">
+    <span class="task-text {% if task.done %}done{% endif %}">
+        {{ task.id }}. {{ task.text }}
+    </span>
+    <div class="actions">
+        <a href="/toggle/{{ task.id }}">
+            <button class="btn-complete">
+                {% if task.done %}↩️ Undo{% else %}✅ Done{% endif %}
+            </button>
+        </a>
+        <a href="/delete/{{ task.id }}">
+            <button class="btn-delete">🗑 Delete</button>
+        </a>
+    </div>
+</li>
+{% endfor %}
